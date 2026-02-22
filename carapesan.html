@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8" />
+  <title>Cara Pesan – Holly</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,300;9..144,700;9..144,900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --brand:#6C4FE8; --brand2:#9B7BFF; --accent:#F97316;
+      --dark:#080612; --surface:#100E20; --card:#16132A;
+      --border:rgba(108,79,232,.2); --text:#EAE6FF; --muted:#7B74A8; --white:#FFFFFF;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family:'Plus Jakarta Sans',sans-serif; background:var(--dark); color:var(--text); overflow-x:hidden; }
+    body::before {
+      content:''; position:fixed; inset:0; z-index:0; pointer-events:none;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      background-size:200px; opacity:.4;
+    }
+
+    /* ─── NAVBAR ──────────────────────────── */
+    nav {
+      position:fixed; top:0; left:0; right:0; z-index:200;
+      display:flex; align-items:center; justify-content:flex-end; overflow-x:auto; scrollbar-width:none;
+      padding:0 48px; height:68px;
+      background:rgba(8,6,18,.82); backdrop-filter:blur(20px);
+      border-bottom:1px solid var(--border);
+    }
+    .nav-links { display:flex; gap:24px; align-items:center; flex-wrap:nowrap; }
+    .nav-links a {
+      color:var(--muted); text-decoration:none;
+      font-size:.875rem; font-weight:500; transition:color .2s;
+    }
+    .nav-links a:hover { color:var(--white); }
+    .nav-links a.active { color:var(--white); }
+    .text-wrapper {
+      color:var(--muted); font-size:.875rem; font-weight:500;
+      cursor:pointer; transition:color .2s;
+      font-family:'Plus Jakarta Sans',sans-serif;
+    }
+    .text-wrapper:hover { color:var(--white); }
+    .text-wrapper-2 {
+      color:var(--muted); font-size:.875rem; font-weight:500;
+      cursor:pointer; transition:color .2s;
+    }
+    .text-wrapper-2:hover { color:var(--white); }
+    .text-wrapper-3 {
+      background:var(--brand); border-radius:999px;
+      padding:7px 20px; color:var(--white);
+      font-size:.875rem; font-weight:700; cursor:pointer;
+      transition:opacity .2s; font-family:'Plus Jakarta Sans',sans-serif;
+    }
+    .text-wrapper-3:hover { opacity:.85; }
+
+    /* ─── HERO ────────────────────────────── */
+    .hero { position:relative; z-index:1; padding:148px 48px 72px; text-align:center; }
+    .hero-glow {
+      position:absolute; top:0; left:50%; transform:translateX(-50%);
+      width:700px; height:420px;
+      background:radial-gradient(ellipse,rgba(108,79,232,.38) 0%,transparent 70%);
+      pointer-events:none;
+    }
+    .badge {
+      display:inline-flex; align-items:center; gap:8px;
+      background:rgba(108,79,232,.15); border:1px solid rgba(155,123,255,.35);
+      border-radius:999px; padding:6px 16px;
+      font-size:.75rem; font-weight:700; color:var(--brand2);
+      letter-spacing:1px; text-transform:uppercase; margin-bottom:24px;
+    }
+    .badge-dot {
+      width:6px; height:6px; border-radius:50%; background:var(--brand2);
+      animation:pulse 1.8s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.35;transform:scale(.55)} }
+    .hero h1 {
+      font-family:'Fraunces',serif; font-size:clamp(2.6rem,6vw,4.5rem);
+      font-weight:900; line-height:1.06; color:var(--white); margin-bottom:18px; letter-spacing:-2px;
+    }
+    .hero h1 span { color:var(--brand2); }
+    .hero p { color:var(--muted); font-size:1.05rem; line-height:1.75; max-width:480px; margin:0 auto; }
+
+    /* ─── STEPS ───────────────────────────── */
+    .steps-wrap { position:relative; z-index:1; max-width:860px; margin:0 auto; padding:0 24px 100px; }
+    .steps-grid { display:flex; flex-direction:column; gap:14px; }
+    .step {
+      display:grid; grid-template-columns:64px 1fr;
+      background:var(--card); border:1px solid var(--border);
+      border-radius:20px; padding:28px 28px 28px 0;
+      position:relative; overflow:hidden;
+      opacity:0; animation:riseIn .55s ease forwards;
+      transition:border-color .3s,box-shadow .3s;
+    }
+    .step:hover { border-color:rgba(108,79,232,.55); box-shadow:0 0 48px rgba(108,79,232,.1); }
+    .step::before {
+      content:''; position:absolute; left:0; top:0; bottom:0; width:3px;
+      background:linear-gradient(to bottom,var(--brand2),transparent);
+      opacity:0; transition:opacity .3s;
+    }
+    .step:hover::before { opacity:1; }
+    .step:nth-child(1){animation-delay:.08s} .step:nth-child(2){animation-delay:.16s}
+    .step:nth-child(3){animation-delay:.24s} .step:nth-child(4){animation-delay:.32s}
+    .step:nth-child(5){animation-delay:.40s} .step:nth-child(6){animation-delay:.48s}
+    @keyframes riseIn { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
+    .step-num-col { display:flex; align-items:flex-start; justify-content:center; padding-top:2px; }
+    .step-num {
+      width:44px; height:44px; border-radius:14px;
+      background:rgba(108,79,232,.18); border:1.5px solid rgba(108,79,232,.4);
+      display:flex; align-items:center; justify-content:center;
+      font-family:'Fraunces',serif; font-weight:900; font-size:1.15rem; color:var(--brand2);
+      transition:background .3s,color .3s,border-color .3s;
+    }
+    .step:hover .step-num { background:var(--brand); border-color:var(--brand); color:var(--white); }
+    .step-content h3 { font-weight:700; font-size:1rem; color:var(--white); margin-bottom:6px; }
+    .step-content p { color:var(--muted); font-size:.9rem; line-height:1.65; }
+    .step-content strong { color:var(--white); }
+    .step-tag {
+      display:inline-block; margin-top:10px;
+      background:rgba(249,115,22,.1); border:1px solid rgba(249,115,22,.3);
+      border-radius:999px; padding:3px 12px;
+      font-size:.75rem; font-weight:700; color:var(--accent);
+    }
+
+    /* ─── CTA ─────────────────────────────── */
+    .cta {
+      position:relative; z-index:1; margin:0 48px 96px;
+      border-radius:28px; padding:60px 56px;
+      background:linear-gradient(130deg,#3C27C2 0%,#6C4FE8 55%,#9B7BFF 100%);
+      display:flex; align-items:center; justify-content:space-between; gap:32px; overflow:hidden;
+    }
+    .cta::after { content:''; position:absolute; right:-80px; top:-80px; width:320px; height:320px; border-radius:50%; background:rgba(255,255,255,.07); }
+    .cta-text h2 { font-family:'Fraunces',serif; font-weight:900; font-size:clamp(1.5rem,3vw,2.2rem); color:var(--white); margin-bottom:8px; }
+    .cta-text p { color:rgba(255,255,255,.7); font-size:.9rem; }
+    .cta-btn {
+      flex-shrink:0; position:relative; z-index:1;
+      background:var(--white); color:var(--brand);
+      font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:.9rem;
+      padding:16px 34px; border-radius:14px; text-decoration:none;
+      transition:transform .2s,box-shadow .2s;
+    }
+    .cta-btn:hover { transform:translateY(-3px); box-shadow:0 16px 40px rgba(0,0,0,.3); }
+
+    /* ─── FOOTER ──────────────────────────── */
+    footer { position:relative; z-index:1; border-top:1px solid var(--border); background:var(--surface); padding:56px 48px 36px; }
+    .footer-grid { display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:40px; margin-bottom:48px; }
+    .footer-brand p { color:var(--muted); font-size:.85rem; line-height:1.7; max-width:220px; }
+    .footer-col h4 { font-weight:700; font-size:.78rem; color:var(--white); letter-spacing:.5px; text-transform:uppercase; margin-bottom:18px; }
+    .footer-col a { display:block; color:var(--muted); text-decoration:none; font-size:.875rem; margin-bottom:10px; transition:color .2s; }
+    .footer-col a:hover { color:var(--white); }
+    .footer-bottom { border-top:1px solid var(--border); padding-top:24px; display:flex; align-items:center; justify-content:space-between; color:var(--muted); font-size:.8rem; }
+
+    @media(max-width:1024px){ .cta{ margin:0 24px 80px; padding:48px 36px; } }
+    @media(max-width:768px){
+      nav{ padding:0 16px; height:60px; }
+      .nav-links{ gap:12px; }
+      .hero{ padding:90px 16px 48px; }
+      .steps-wrap{ padding:0 16px 72px; }
+      .cta{ flex-direction:column; text-align:center; margin:0 20px 64px; padding:40px 28px; }
+      .cta-btn{ width:100%; text-align:center; }
+      footer{ padding:48px 20px 28px; }
+      .footer-grid{ grid-template-columns:1fr 1fr; gap:32px; }
+      .footer-bottom{ flex-direction:column; gap:8px; text-align:center; }
+    }
+    @media(max-width:480px){
+      .footer-grid{ grid-template-columns:1fr; }
+      .step{ grid-template-columns:48px 1fr; padding:20px 16px 20px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-links">
+      <a href="index.html">Beranda</a>
+      <a href="produk.html">Produk</a>
+      <a href="carapesan.html" class="active">Cara Pesan</a>
+      <a href="bantuan.html">Bantuan</a>
+      <span id="btn-signin" class="text-wrapper">Sign In</span>
+      <span id="btn-signup" class="text-wrapper-3">Sign Up</span>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-glow"></div>
+    <div class="badge"><span class="badge-dot"></span> Panduan Pemesanan</div>
+    <h1>Cara Pesan di <span>Holly</span></h1>
+    <p>Ikuti 6 langkah mudah ini untuk mendapatkan layanan digital kami. Cepat, aman, dan dipandu langsung oleh admin kami.</p>
+  </section>
+
+  <!-- STEPS -->
+  <div class="steps-wrap">
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-num-col"><div class="step-num">1</div></div>
+        <div class="step-content">
+          <h3>Tekan Hubungi Kami</h3>
+          <p>Klik tombol "Hubungi Kami" yang tersedia di halaman utama atau di bawah halaman ini. Kamu akan langsung diarahkan ke WhatsApp kami.</p>
+          <span class="step-tag">💬 WhatsApp</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num-col"><div class="step-num">2</div></div>
+        <div class="step-content">
+          <h3>Kirim Pesan Pembuka</h3>
+          <p>Setelah masuk ke WhatsApp, ketik: <strong>"Saya ingin Pesan Produk anda"</strong> untuk memulai sesi pemesanan bersama tim kami.</p>
+          <span class="step-tag">✍️ Pesan Pembuka</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num-col"><div class="step-num">3</div></div>
+        <div class="step-content">
+          <h3>Terhubung dengan Admin</h3>
+          <p>Admin kami akan segera membalas dan siap memandu kamu. Jangan ragu bertanya — tim kami ramah dan responsif setiap hari.</p>
+          <span class="step-tag">👤 Admin Siap Membantu</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num-col"><div class="step-num">4</div></div>
+        <div class="step-content">
+          <h3>Pilih Produk atau Jasa</h3>
+          <p>Sampaikan produk atau jasa yang ingin kamu pesan — Jasa Unbind, Pemulihan Akun, Jasa Ketik, Jasa PPT, dan lainnya. Admin akan memberikan rincian harga.</p>
+          <span class="step-tag">🛒 Pilih Layanan</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num-col"><div class="step-num">5</div></div>
+        <div class="step-content">
+          <h3>Menunggu Sampai Selesai</h3>
+          <p>Setelah konfirmasi pembayaran, tim kami langsung memproses pesananmu. Estimasi waktu pengerjaan akan diinformasikan oleh admin.</p>
+          <span class="step-tag">⏳ Sedang Diproses</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num-col"><div class="step-num">6</div></div>
+        <div class="step-content">
+          <h3>Silakan Bertanya Jika Ada yang Kurang Jelas</h3>
+          <p>Kami selalu siap menjawab setiap pertanyaanmu selama proses berlangsung. Kepuasanmu adalah prioritas utama kami! 🎉</p>
+          <span class="step-tag">🙋 Tanya Kapan Saja</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="cta-text">
+      <h2>Siap untuk mulai memesan?</h2>
+      <p>Hubungi admin kami sekarang dan dapatkan pelayanan terbaik dari Holly.</p>
+    </div>
+    <a class="cta-btn" href="https://wa.me/6289654170240" target="_blank">Hubungi Kami via WhatsApp →</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div style="background:#fff;border-radius:12px;padding:8px 16px;display:inline-flex;align-items:center;margin-bottom:14px;">
+          <img src="Holly.png" alt="Holly Group" style="height:48px;width:auto;" />
+        </div>
+        <p>Produk &amp; Jasa Digital untuk semua kebutuhanmu. Terpercaya, cepat, dan profesional.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Tentang Holly</h4>
+        <a href="carapesan.html">Cara Pesan</a>
+        <a href="https://wa.me/6289654170240" target="_blank">Hubungi Kami</a>
+        <a href="https://wa.me/6289654170240" target="_blank">Customer Service</a>
+        <a href="bantuan.html">Pusat Bantuan</a>
+        <a href="tentangkami.html">Tentang Kami</a>
+      </div>
+      <div class="footer-col">
+        <h4>Produk &amp; Jasa</h4>
+        <a href="produk.html">Jasa Unbind</a>
+        <a href="produk.html">Jasa Pemulihan Akun Game</a>
+        <a href="produk.html">Jasa Pemulihan Akun Sosial Media</a>
+        <a href="produk.html">Jasa Ketik</a>
+        <a href="produk.html">Jasa Pembuatan PPT</a>
+        <a href="produk.html">Jasa Perapian Dokumen</a>
+        <a href="produk.html">Templat PPT Interaktif</a>
+        <a href="produk.html">E Book Pemulihan dan Unbind</a>
+      </div>
+      <div class="footer-col">
+        <h4>Follow Kami di</h4>
+        <a href="https://www.facebook.com/share/1Aq7HUheYz/?mibextid=wwXIfr" target="_blank">Facebook</a>
+        <a href="https://www.instagram.com/hollygrup.id?igsh=b2hsNmZiY3loNDJn&utm_source=qr" target="_blank">Instagram</a>
+        <a href="https://www.tiktok.com/@holly.id2?_r=1&_t=ZS-946F6OQSyt5" target="_blank">TikTok</a>
+        <a href="#" target="_blank">Youtube</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>Copyright © 2025 Holly. All rights reserved.</span>
+      <span>Made with ❤️ by Holly Team</span>
+    </div>
+  </footer>
+
+  <script src="auth.js"></script>
+
+</body>
+</html>

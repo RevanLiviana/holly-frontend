@@ -1,0 +1,538 @@
+/* ============================================
+   HOLLY - Responsive CSS
+   Mobile, Tablet, Desktop
+   ============================================ */
+
+* { box-sizing: border-box; }
+
+body {
+  background: #fff;
+  overflow-x: hidden;
+}
+
+/* ============================================
+   LANDING PAGE WRAPPER
+   ============================================ */
+.landing-page {
+  background-color: #ffffff;
+  width: 100%;
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ============================================
+   NAVBAR
+   ============================================ */
+.landing-page .div {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 64px;
+  background-color: #e2e2e2;
+  border-radius: 0 0 20px 20px;
+  z-index: 999;
+}
+
+.landing-page .text-wrapper,
+.landing-page .text-wrapper-2,
+.landing-page .text-wrapper-3 {
+  position: fixed;
+  top: 20px;
+  left: auto;
+  width: auto;
+  font-family: "Inter", Helvetica;
+  font-size: 16px;
+  font-weight: 400;
+  cursor: pointer;
+  z-index: 1000;
+  text-align: center;
+}
+
+.landing-page .text-wrapper   { right: 160px; color: #0f7fff; }
+.landing-page .text-wrapper-2 { right: 270px; color: #000000; }
+.landing-page .text-wrapper-3 { right: 60px;  color: #010101; }
+
+/* ============================================
+   HERO BANNER
+   ============================================ */
+.landing-page .rectangle {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 140px;
+  margin-top: 64px;
+  border-radius: 0 0 30px 30px;
+  background: linear-gradient(90deg, rgba(53,25,102,1) 0%, rgba(107,51,204,1) 100%);
+}
+
+/* ============================================
+   MENU GROUP
+   ============================================ */
+.landing-page .group {
+  position: relative;
+  top: auto; left: auto;
+  width: 90%;
+  max-width: 1100px;
+  margin: 24px auto;
+  background: #ffffff;
+  box-shadow: 0px 4px 8px 2px rgba(0,0,0,0.2);
+  border-radius: 12px;
+  padding: 16px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  height: auto;
+}
+
+.landing-page .rectangle-2 { display: none; }
+
+.landing-page .text-wrapper-4,
+.landing-page .text-wrapper-5,
+.landing-page .p,
+.landing-page .text-wrapper-6,
+.landing-page .text-wrapper-7,
+.landing-page .text-wrapper-8,
+.landing-page .text-wrapper-9,
+.landing-page .text-wrapper-10 {
+  position: relative;
+  top: auto; left: auto;
+  width: auto;
+  font-family: "Inter", Helvetica;
+  font-size: 15px;
+  font-weight: 400;
+  color: #000000;
+  white-space: normal;
+  letter-spacing: 0;
+  line-height: 1.8;
+}
+
+/* ============================================
+   HERO IMAGE
+   ============================================ */
+.landing-page .Gambarkantor {
+  position: relative;
+  top: auto; left: auto;
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  margin-top: 0;
+}
+
+/* ============================================
+   HEADLINE TEXT
+   ============================================ */
+.landing-page .produk-jasa-digital {
+  position: relative;
+  top: auto; left: auto;
+  width: 100%;
+  padding: 48px 20px 32px;
+  text-align: center;
+  -webkit-text-stroke: 1px #ffffff;
+  background: linear-gradient(90deg, rgba(51,18,76,1) 0%, rgba(119,41,178,1) 100%);
+  -webkit-background-clip: text !important;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: "Krona One", Helvetica;
+  font-weight: 400;
+  font-size: clamp(24px, 5vw, 80px);
+  letter-spacing: 0;
+  line-height: 1.2;
+}
+
+/* ============================================
+   BANTUAN IMAGE
+   ============================================ */
+.landing-page .Bantuan {
+  display: block;
+  width: 90%;
+  max-width: 700px;
+  height: auto;
+  margin: 24px auto 40px;
+  object-fit: contain;
+}
+
+/* ============================================
+   BEST SELLER LABEL
+   ============================================ */
+.landing-page .text-wrapper-30 {
+  position: relative;
+  top: auto; left: auto;
+  width: 100%;
+  text-align: center;
+  font-family: "Italianno", Helvetica;
+  font-size: clamp(48px, 10vw, 96px);
+  font-weight: 400;
+  color: #000000;
+  padding: 40px 20px 16px;
+  white-space: normal;
+}
+
+/* ============================================
+   CARDS SECTION
+   ============================================ */
+.cards-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  justify-content: center;
+  padding: 0 24px 60px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Card backgrounds */
+.landing-page .rectangle-5 {
+  position: relative;
+  top: auto; left: auto;
+  width: min(420px, 90vw);
+  height: auto;
+  min-height: 380px;
+  border-radius: 30px;
+  background: linear-gradient(180deg, rgba(73,12,114,1) 0%, rgba(139,23,216,1) 100%);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.landing-page .rectangle-7 {
+  position: relative;
+  top: auto; left: auto;
+  width: min(420px, 90vw);
+  height: auto;
+  min-height: 380px;
+  border-radius: 30px;
+  background: linear-gradient(180deg, rgba(32,26,116,1) 0%, rgba(60,48,218,1) 100%);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.landing-page .rectangle-6,
+.landing-page .rectangle-8 { display: none; }
+
+.landing-page .img {
+  position: relative;
+  top: auto; left: auto;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+  margin: 16px 0;
+}
+
+.landing-page .text-wrapper-31,
+.landing-page .text-wrapper-32 {
+  position: relative;
+  top: auto; left: auto;
+  width: 100%;
+  font-family: "Kaisei Opti", Helvetica;
+  font-size: clamp(18px, 3vw, 28px);
+  font-weight: 400;
+  color: #ffffff;
+  padding: 8px 0 4px;
+}
+
+.landing-page .dimulai-dari-rp,
+.landing-page .dimulai-dari {
+  position: relative;
+  top: auto; left: auto;
+  width: 100%;
+  font-family: "Kaisei Opti", Helvetica;
+  font-size: clamp(15px, 2vw, 22px);
+  font-weight: 400;
+  color: #e0e0e0;
+  padding: 4px 0 0;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.landing-page .group-2 {
+  position: relative;
+  top: auto; left: auto;
+  width: 100%;
+  background-color: #404040;
+  padding: 48px 32px 32px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 32px 24px;
+  height: auto;
+}
+
+.landing-page .rectangle-3,
+.landing-page .rectangle-4 { display: none; }
+
+.landing-page .logo-holly-group {
+  position: relative;
+  top: auto; left: auto;
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 14px;
+  grid-column: 1;
+}
+
+.landing-page .text-wrapper-11,
+.landing-page .text-wrapper-12,
+.landing-page .produk-jasa {
+  position: relative;
+  top: auto; left: auto;
+  font-family: "DM Serif Display", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: clamp(18px, 2.5vw, 32px);
+  margin-bottom: 12px;
+  width: 100%;
+  text-align: left;
+  white-space: normal;
+}
+
+.landing-page .text-wrapper-13,
+.landing-page .text-wrapper-14,
+.landing-page .text-wrapper-15,
+.landing-page .text-wrapper-16,
+.landing-page .text-wrapper-17,
+.landing-page .text-wrapper-18,
+.landing-page .text-wrapper-19,
+.landing-page .text-wrapper-20,
+.landing-page .text-wrapper-21,
+.landing-page .text-wrapper-22,
+.landing-page .text-wrapper-23,
+.landing-page .text-wrapper-24,
+.landing-page .text-wrapper-25,
+.landing-page .text-wrapper-26,
+.landing-page .text-wrapper-27,
+.landing-page .text-wrapper-28,
+.landing-page .text-wrapper-29 {
+  position: relative;
+  top: auto; left: auto;
+  font-family: "Inter", Helvetica;
+  font-size: 15px;
+  font-weight: 400;
+  color: #b0b0b0;
+  display: block;
+  margin-bottom: 8px;
+  width: 100%;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: normal;
+}
+
+.landing-page .text-wrapper-26:hover,
+.landing-page .text-wrapper-27:hover,
+.landing-page .text-wrapper-28:hover,
+.landing-page .text-wrapper-29:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+/* ============================================
+   COPYRIGHT
+   ============================================ */
+.landing-page .text-wrapper-33 {
+  position: relative;
+  top: auto; left: auto;
+  width: 100%;
+  text-align: center;
+  font-family: "Inter", Helvetica;
+  font-size: 14px;
+  font-weight: 400;
+  color: #ffffff;
+  background: #404040;
+  padding: 16px 20px 24px;
+  white-space: normal;
+}
+
+/* ============================================
+   MEDIA QUERIES
+   ============================================ */
+
+/* Mobile kecil (< 480px) */
+@media (max-width: 480px) {
+  .landing-page .text-wrapper-2 { right: 190px; font-size: 13px; }
+  .landing-page .text-wrapper   { right: 100px; font-size: 13px; }
+  .landing-page .text-wrapper-3 { right: 16px;  font-size: 13px; }
+
+  .landing-page .rectangle { height: 100px; }
+  .landing-page .Gambarkantor { height: 220px; }
+
+  .landing-page .produk-jasa-digital {
+    font-size: clamp(20px, 7vw, 32px);
+    padding: 32px 16px 20px;
+  }
+
+  .landing-page .group {
+    flex-direction: column;
+    width: 95%;
+  }
+
+  .landing-page .group-2 {
+    grid-template-columns: 1fr;
+    padding: 32px 20px;
+  }
+
+  .landing-page .logo-holly-group {
+    grid-column: 1;
+  }
+
+  .cards-section {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Tablet (481px - 900px) */
+@media (min-width: 481px) and (max-width: 900px) {
+  .landing-page .text-wrapper   { right: 130px; }
+  .landing-page .text-wrapper-3 { right: 24px; }
+
+  .landing-page .Gambarkantor { height: 300px; }
+
+  .landing-page .group-2 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .landing-page .logo-holly-group {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Desktop (> 1100px) */
+@media (min-width: 1100px) {
+  .landing-page .group {
+    flex-wrap: nowrap;
+  }
+
+  .landing-page .group-2 {
+    grid-template-columns: repeat(4, 1fr);
+    padding: 56px 60px 40px;
+  }
+
+  .landing-page .logo-holly-group {
+    grid-column: 1;
+  }
+
+  .landing-page .Gambarkantor { height: 500px; }
+
+  .cards-section {
+    flex-wrap: nowrap;
+  }
+}
+
+/* Footer Logo Wrap */
+.footer-logo-wrap {
+  width: 120px;
+  height: 120px;
+  background-color: #d9d9d9;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.landing-page .logo-holly-group {
+  position: relative;
+  top: auto; left: auto;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+/* ============================================
+   FOOTER COLUMNS
+   ============================================ */
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* ===== NAVBAR USER (setelah login) ===== */
+#navbar-user {
+  position: fixed !important;
+  top: 18px !important;
+  right: 20px !important;
+  z-index: 2147483647 !important;
+  display: none;
+  align-items: center;
+  gap: 10px;
+  font-family: "Inter", Helvetica;
+  pointer-events: auto !important;
+}
+
+#navbar-nama {
+  font-size: 14px;
+  font-weight: 700;
+  color: #4c1d95;
+  background: #fff;
+  padding: 5px 12px;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+#btn-signout {
+  font-size: 13px;
+  color: #7c3aed;
+  cursor: pointer;
+  text-decoration: underline;
+  background: #fff;
+  padding: 5px 12px;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* ===== NAVBAR USER (setelah login) ===== */
+#navbar-user {
+  position: fixed !important;
+  top: 18px !important;
+  right: 20px !important;
+  z-index: 2147483647 !important;
+  display: none;
+  align-items: center;
+  gap: 10px;
+  font-family: "Inter", Helvetica;
+  pointer-events: auto !important;
+}
+
+#navbar-nama {
+  font-size: 14px;
+  font-weight: 700;
+  color: #4c1d95;
+  background: #fff;
+  padding: 5px 12px;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+#btn-signout {
+  font-size: 13px;
+  color: #7c3aed;
+  cursor: pointer;
+  text-decoration: underline;
+  background: #fff;
+  padding: 5px 12px;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  pointer-events: auto !important;
+}
+
+#navbar-user {
+  pointer-events: auto !important;
+}
+
+#navbar-user span {
+  pointer-events: auto !important;
+  position: relative;
+  z-index: 2147483647;
+}

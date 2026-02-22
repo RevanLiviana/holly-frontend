@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8" />
+  <title>Tentang Kami – Holly</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,300;9..144,700;9..144,900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --brand:#6C4FE8; --brand2:#9B7BFF; --accent:#F97316;
+      --dark:#080612; --surface:#100E20; --card:#16132A;
+      --border:rgba(108,79,232,.2); --text:#EAE6FF; --muted:#7B74A8; --white:#FFFFFF;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family:'Plus Jakarta Sans',sans-serif; background:var(--dark); color:var(--text); overflow-x:hidden; }
+    body::before {
+      content:''; position:fixed; inset:0; z-index:0; pointer-events:none;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      background-size:200px; opacity:.4;
+    }
+
+    /* ─── NAVBAR ──────────────────────────── */
+    nav {
+      position:fixed; top:0; left:0; right:0; z-index:200;
+      display:flex; align-items:center; justify-content:flex-end; overflow-x:auto; scrollbar-width:none;
+      padding:0 48px; height:68px;
+      background:rgba(8,6,18,.82); backdrop-filter:blur(20px);
+      border-bottom:1px solid var(--border);
+    }
+    .nav-links { display:flex; gap:24px; align-items:center; flex-wrap:nowrap; }
+    .nav-links a { color:var(--muted); text-decoration:none; font-size:.875rem; font-weight:500; transition:color .2s; }
+    .nav-links a:hover { color:var(--white); }
+    .nav-links a.active { color:var(--white); }
+    .text-wrapper { color:var(--muted); font-size:.875rem; font-weight:500; cursor:pointer; transition:color .2s; font-family:'Plus Jakarta Sans',sans-serif; }
+    .text-wrapper:hover { color:var(--white); }
+    .text-wrapper-2 { color:var(--muted); font-size:.875rem; font-weight:500; cursor:pointer; transition:color .2s; }
+    .text-wrapper-2:hover { color:var(--white); }
+    .text-wrapper-3 { background:var(--brand); border-radius:999px; padding:7px 20px; color:var(--white); font-size:.875rem; font-weight:700; cursor:pointer; transition:opacity .2s; font-family:'Plus Jakarta Sans',sans-serif; }
+    .text-wrapper-3:hover { opacity:.85; }
+
+    /* ─── HERO ────────────────────────────── */
+    .hero { position:relative; z-index:1; padding:148px 48px 80px; text-align:center; }
+    .hero-glow {
+      position:absolute; top:0; left:50%; transform:translateX(-50%);
+      width:700px; height:420px;
+      background:radial-gradient(ellipse,rgba(108,79,232,.38) 0%,transparent 70%);
+      pointer-events:none;
+    }
+    .badge {
+      display:inline-flex; align-items:center; gap:8px;
+      background:rgba(108,79,232,.15); border:1px solid rgba(155,123,255,.35);
+      border-radius:999px; padding:6px 16px;
+      font-size:.75rem; font-weight:700; color:var(--brand2);
+      letter-spacing:1px; text-transform:uppercase; margin-bottom:24px;
+    }
+    .badge-dot { width:6px; height:6px; border-radius:50%; background:var(--brand2); animation:pulse 1.8s ease-in-out infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.35;transform:scale(.55)} }
+    .hero h1 { font-family:'Fraunces',serif; font-size:clamp(2.6rem,6vw,4.5rem); font-weight:900; line-height:1.06; color:var(--white); margin-bottom:18px; letter-spacing:-2px; }
+    .hero h1 span { color:var(--brand2); }
+    .hero p { color:var(--muted); font-size:1.05rem; line-height:1.75; max-width:540px; margin:0 auto; }
+
+    @keyframes riseIn { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
+
+    /* ─── SECTION WRAPPER ─────────────────── */
+    .section-wrap {
+      position:relative; z-index:1;
+      max-width:860px; margin:0 auto;
+      padding:0 24px;
+    }
+
+    /* ─── STORY ───────────────────────────── */
+    .story-card {
+      background:var(--card); border:1px solid var(--border);
+      border-radius:24px; padding:48px;
+      margin-bottom:24px;
+      opacity:0; animation:riseIn .55s ease forwards;
+      animation-delay:.08s;
+      position:relative; overflow:hidden;
+    }
+    .story-card::before {
+      content:''; position:absolute; left:0; top:0; bottom:0; width:4px;
+      background:linear-gradient(to bottom,var(--brand2),var(--brand));
+    }
+    .story-card h2 {
+      font-family:'Fraunces',serif; font-weight:900;
+      font-size:1.6rem; color:var(--white); margin-bottom:16px;
+    }
+    .story-card p {
+      color:var(--muted); font-size:.95rem; line-height:1.85;
+      margin-bottom:14px;
+    }
+    .story-card p:last-child { margin-bottom:0; }
+    .story-card strong { color:var(--white); }
+
+    /* ─── STATS ───────────────────────────── */
+    .stats-grid {
+      display:grid; grid-template-columns:repeat(3,1fr); gap:14px;
+      margin-bottom:24px;
+    }
+    .stat-card {
+      background:var(--card); border:1px solid var(--border);
+      border-radius:20px; padding:32px 24px; text-align:center;
+      opacity:0; animation:riseIn .55s ease forwards;
+      transition:border-color .3s, box-shadow .3s, transform .3s;
+    }
+    .stat-card:nth-child(1){animation-delay:.12s}
+    .stat-card:nth-child(2){animation-delay:.20s}
+    .stat-card:nth-child(3){animation-delay:.28s}
+    .stat-card:hover { border-color:rgba(108,79,232,.55); box-shadow:0 0 40px rgba(108,79,232,.1); transform:translateY(-4px); }
+    .stat-num {
+      font-family:'Fraunces',serif; font-weight:900;
+      font-size:2.6rem; color:var(--brand2); line-height:1;
+      margin-bottom:8px;
+    }
+    .stat-label { color:var(--muted); font-size:.85rem; font-weight:500; }
+
+    /* ─── VALUES ──────────────────────────── */
+    .values-wrap { margin-bottom:24px; }
+    .values-title {
+      font-family:'Fraunces',serif; font-weight:700;
+      font-size:1.3rem; color:var(--white);
+      margin-bottom:16px;
+    }
+    .values-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .value-card {
+      background:var(--card); border:1px solid var(--border);
+      border-radius:20px; padding:28px 24px;
+      opacity:0; animation:riseIn .55s ease forwards;
+      transition:border-color .3s, box-shadow .3s;
+      display:flex; gap:16px; align-items:flex-start;
+    }
+    .value-card:nth-child(1){animation-delay:.14s}
+    .value-card:nth-child(2){animation-delay:.22s}
+    .value-card:nth-child(3){animation-delay:.30s}
+    .value-card:nth-child(4){animation-delay:.38s}
+    .value-card:hover { border-color:rgba(108,79,232,.5); box-shadow:0 0 40px rgba(108,79,232,.08); }
+    .value-icon {
+      width:44px; height:44px; border-radius:14px; flex-shrink:0;
+      background:rgba(108,79,232,.18); border:1.5px solid rgba(108,79,232,.35);
+      display:flex; align-items:center; justify-content:center;
+      font-size:1.2rem;
+    }
+    .value-card h3 { font-weight:700; font-size:.95rem; color:var(--white); margin-bottom:6px; }
+    .value-card p { color:var(--muted); font-size:.85rem; line-height:1.65; }
+
+    /* ─── TEAM ────────────────────────────── */
+    .team-wrap { margin-bottom:24px; }
+    .team-title {
+      font-family:'Fraunces',serif; font-weight:700;
+      font-size:1.3rem; color:var(--white);
+      margin-bottom:16px;
+    }
+    .team-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+    .team-card {
+      background:var(--card); border:1px solid var(--border);
+      border-radius:20px; padding:28px 20px; text-align:center;
+      opacity:0; animation:riseIn .55s ease forwards;
+      transition:border-color .3s, box-shadow .3s, transform .3s;
+    }
+    .team-card:nth-child(1){animation-delay:.10s}
+    .team-card:nth-child(2){animation-delay:.18s}
+    .team-card:nth-child(3){animation-delay:.26s}
+    .team-card:hover { border-color:rgba(108,79,232,.55); box-shadow:0 0 40px rgba(108,79,232,.1); transform:translateY(-4px); }
+    .team-avatar {
+      width:72px; height:72px; border-radius:50%; margin:0 auto 14px;
+      background:linear-gradient(135deg, var(--brand), var(--brand2));
+      display:flex; align-items:center; justify-content:center;
+      font-family:'Fraunces',serif; font-weight:900;
+      font-size:1.6rem; color:#fff;
+      border:3px solid rgba(155,123,255,.3);
+    }
+    .team-card h3 { font-weight:700; font-size:.95rem; color:var(--white); margin-bottom:4px; }
+    .team-role {
+      display:inline-block; margin-bottom:10px;
+      background:rgba(108,79,232,.15); border:1px solid rgba(108,79,232,.3);
+      border-radius:999px; padding:3px 12px;
+      font-size:.72rem; font-weight:700; color:var(--brand2);
+    }
+    .team-card p { color:var(--muted); font-size:.82rem; line-height:1.6; }
+
+    /* ─── LAYANAN LIST ────────────────────── */
+    .layanan-wrap { margin-bottom:60px; }
+    .layanan-title {
+      font-family:'Fraunces',serif; font-weight:700;
+      font-size:1.3rem; color:var(--white);
+      margin-bottom:16px;
+    }
+    .layanan-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    .layanan-item {
+      background:var(--card); border:1px solid var(--border);
+      border-radius:14px; padding:16px 20px;
+      display:flex; align-items:center; gap:12px;
+      opacity:0; animation:riseIn .55s ease forwards;
+      transition:border-color .3s, box-shadow .3s, transform .3s;
+      text-decoration:none;
+    }
+    .layanan-item:hover { border-color:rgba(108,79,232,.55); box-shadow:0 0 24px rgba(108,79,232,.1); transform:translateY(-2px); }
+    .layanan-item:nth-child(1){animation-delay:.08s} .layanan-item:nth-child(2){animation-delay:.13s}
+    .layanan-item:nth-child(3){animation-delay:.18s} .layanan-item:nth-child(4){animation-delay:.23s}
+    .layanan-item:nth-child(5){animation-delay:.28s} .layanan-item:nth-child(6){animation-delay:.33s}
+    .layanan-item:nth-child(7){animation-delay:.38s} .layanan-item:nth-child(8){animation-delay:.43s}
+    .layanan-dot {
+      width:8px; height:8px; border-radius:50%;
+      background:var(--brand2); flex-shrink:0;
+    }
+    .layanan-item span { color:var(--text); font-size:.88rem; font-weight:500; }
+    .layanan-arrow {
+      margin-left:auto; color:var(--brand2); font-size:.75rem;
+      opacity:0; transition:opacity .2s;
+    }
+    .layanan-item:hover .layanan-arrow { opacity:1; }
+
+    /* ─── CTA ─────────────────────────────── */
+    .cta {
+      position:relative; z-index:1; margin:0 48px 96px;
+      border-radius:28px; padding:60px 56px;
+      background:linear-gradient(130deg,#3C27C2 0%,#6C4FE8 55%,#9B7BFF 100%);
+      display:flex; align-items:center; justify-content:space-between; gap:32px; overflow:hidden;
+    }
+    .cta::after { content:''; position:absolute; right:-80px; top:-80px; width:320px; height:320px; border-radius:50%; background:rgba(255,255,255,.07); }
+    .cta-text h2 { font-family:'Fraunces',serif; font-weight:900; font-size:clamp(1.5rem,3vw,2.2rem); color:var(--white); margin-bottom:8px; }
+    .cta-text p { color:rgba(255,255,255,.7); font-size:.9rem; }
+    .cta-btn { flex-shrink:0; position:relative; z-index:1; background:var(--white); color:var(--brand); font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:.9rem; padding:16px 34px; border-radius:14px; text-decoration:none; transition:transform .2s,box-shadow .2s; }
+    .cta-btn:hover { transform:translateY(-3px); box-shadow:0 16px 40px rgba(0,0,0,.3); }
+
+    /* ─── FOOTER ──────────────────────────── */
+    footer { position:relative; z-index:1; border-top:1px solid var(--border); background:var(--surface); padding:56px 48px 36px; }
+    .footer-grid { display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:40px; margin-bottom:48px; }
+    .footer-brand p { color:var(--muted); font-size:.85rem; line-height:1.7; max-width:220px; }
+    .footer-col h4 { font-weight:700; font-size:.78rem; color:var(--white); letter-spacing:.5px; text-transform:uppercase; margin-bottom:18px; }
+    .footer-col a, .footer-col span { display:block; color:var(--muted); text-decoration:none; font-size:.875rem; margin-bottom:10px; transition:color .2s; cursor:pointer; }
+    .footer-col a:hover, .footer-col span:hover { color:var(--white); }
+    .footer-bottom { border-top:1px solid var(--border); padding-top:24px; display:flex; align-items:center; justify-content:space-between; color:var(--muted); font-size:.8rem; }
+
+    /* ─── RESPONSIVE ──────────────────────── */
+    @media(max-width:1024px){
+      .cta{ margin:0 24px 80px; padding:48px 36px; }
+    }
+    @media(max-width:768px){
+      nav{ padding:0 16px; height:60px; }
+      .nav-links{ gap:12px; flex-wrap:wrap; justify-content:center; }
+      .nav-links a, .text-wrapper, .text-wrapper-2{ font-size:.78rem; }
+      .text-wrapper-3{ padding:6px 14px; font-size:.78rem; }
+      .hero{ padding:90px 16px 48px; }
+      .hero h1{ font-size:clamp(1.8rem,7vw,2.8rem); letter-spacing:-1px; }
+      .hero p{ font-size:.9rem; }
+      .badge{ font-size:.68rem; padding:5px 12px; }
+      .section-wrap{ padding:0 16px; }
+      .stats-grid{ grid-template-columns:1fr 1fr; }
+      .values-grid{ grid-template-columns:1fr; }
+      .team-grid{ grid-template-columns:1fr 1fr; }
+      .layanan-grid{ grid-template-columns:1fr; }
+      .cta{ flex-direction:column; text-align:center; margin:0 16px 64px; padding:36px 24px; }
+      .cta-btn{ width:100%; text-align:center; }
+      footer{ padding:40px 16px 24px; }
+      .footer-grid{ grid-template-columns:1fr 1fr; gap:28px; }
+      .footer-bottom{ flex-direction:column; gap:8px; text-align:center; }
+    }
+    @media(max-width:480px){
+      nav{ padding:0 12px; height:56px; }
+      .nav-links{ gap:8px; }
+      .nav-links a, .text-wrapper, .text-wrapper-2{ font-size:.72rem; }
+      .text-wrapper-3{ padding:5px 10px; font-size:.72rem; }
+      .hero{ padding:80px 14px 40px; }
+      .hero h1{ font-size:clamp(1.6rem,8vw,2.4rem); }
+      .stats-grid{ grid-template-columns:1fr; }
+      .team-grid{ grid-template-columns:1fr; }
+      .footer-grid{ grid-template-columns:1fr; }
+      .cta{ margin:0 8px 48px; padding:28px 18px; }
+      .story-card{ padding:24px 20px; }
+    }
+    @media(max-width:360px){
+      .nav-links{ gap:6px; }
+      .nav-links a, .text-wrapper, .text-wrapper-2{ font-size:.68rem; }
+      .text-wrapper-3{ padding:4px 8px; font-size:.68rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-links">
+      <a href="index.html">Beranda</a>
+      <a href="carapesan.html">Cara Pesan</a>
+      <a href="bantuan.html" class="text-wrapper-2">Bantuan</a>
+      <span class="text-wrapper">Sign In</span>
+      <span class="text-wrapper-3">Sign Up</span>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-glow"></div>
+    <div class="badge"><span class="badge-dot"></span> Tentang Kami</div>
+    <h1>Kenali <span>Holly</span> Lebih Dekat</h1>
+    <p>Kami hadir untuk memudahkan kebutuhan digital kamu — dari pemulihan akun hingga pembuatan dokumen profesional, semua dalam satu tempat.</p>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <div class="section-wrap">
+
+    <!-- STORY -->
+    <div class="story-card">
+      <h2>Cerita di Balik Holly</h2>
+      <p>
+        <strong>Holly</strong> lahir dari keresahan sederhana — sulitnya menemukan jasa digital yang terpercaya, terjangkau, dan dikerjakan dengan serius. Kami memulai perjalanan ini dengan visi yang jelas: menjadi mitra digital terpercaya bagi siapa saja yang membutuhkan bantuan, mulai dari pelajar, mahasiswa, hingga pelaku usaha.
+      </p>
+      <p>
+        Dimulai dari layanan kecil, Holly kini telah berkembang menjadi penyedia jasa digital yang melayani ratusan pelanggan. Setiap pesanan kami tangani dengan penuh tanggung jawab, karena bagi kami <strong>kepercayaan pelanggan adalah segalanya.</strong>
+      </p>
+      <p>
+        Kami percaya bahwa layanan digital berkualitas seharusnya bisa diakses semua orang — bukan hanya mereka yang punya waktu dan keahlian teknis. Holly hadir untuk menjembatani itu.
+      </p>
+    </div>
+
+    <!-- STATS -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-num">500+</div>
+        <div class="stat-label">Pelanggan Terlayani</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">8</div>
+        <div class="stat-label">Jenis Layanan</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">98%</div>
+        <div class="stat-label">Tingkat Kepuasan</div>
+      </div>
+    </div>
+
+    <!-- VALUES -->
+    <div class="values-wrap">
+      <div class="values-title">Nilai-Nilai Kami</div>
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-icon">🤝</div>
+          <div>
+            <h3>Kepercayaan</h3>
+            <p>Kami menjaga privasi dan data pelanggan dengan standar keamanan tinggi. Setiap informasi yang kamu berikan aman bersama kami.</p>
+          </div>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">⚡</div>
+          <div>
+            <h3>Kecepatan</h3>
+            <p>Kami menghargai waktu kamu. Setiap layanan dikerjakan secepat mungkin tanpa mengorbankan kualitas hasil akhir.</p>
+          </div>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">💎</div>
+          <div>
+            <h3>Kualitas</h3>
+            <p>Standar tinggi bukan sekadar janji. Setiap pekerjaan kami cek ulang sebelum diserahkan agar hasilnya selalu memuaskan.</p>
+          </div>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">💬</div>
+          <div>
+            <h3>Responsif</h3>
+            <p>Admin kami aktif setiap hari dan siap menjawab pertanyaanmu kapan saja. Tidak ada pertanyaan yang dibiarkan tanpa jawaban.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TEAM -->
+    <div class="team-wrap">
+      <div class="team-title">Tim Kami</div>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-avatar">H</div>
+          <h3>Holly</h3>
+          <span class="team-role">Founder & CEO</span>
+          <p>Penggagas Holly yang memiliki visi kuat untuk menyediakan layanan digital berkualitas dan terjangkau.</p>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">A</div>
+          <h3>Admin Team</h3>
+          <span class="team-role">Customer Service</span>
+          <p>Tim admin kami yang ramah dan responsif siap memandu setiap pelanggan dari awal hingga selesai.</p>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">T</div>
+          <h3>Tim Teknis</h3>
+          <span class="team-role">Specialist</span>
+          <p>Para ahli di balik layanan unbind, pemulihan akun, dan semua pekerjaan teknis di Holly.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- LAYANAN -->
+    <div class="layanan-wrap">
+      <div class="layanan-title">Layanan yang Kami Sediakan</div>
+      <div class="layanan-grid">
+        <a href="produk.html" class="layanan-item"><div class="layanan-dot"></div><span>Jasa Unbind All Game</span><span class="layanan-arrow">→</span></a>
+        <a href="produk.html" class="layanan-item"><div class="layanan-dot"></div><span>Jasa Pemulihan Akun Game</span><span class="layanan-arrow">→</span></a>
+        <a href="produk.html" class="layanan-item"><div class="layanan-dot"></div><span>Jasa Pemulihan Akun Sosial Media</span><span class="layanan-arrow">→</span></a>
+        <a href="produk.html" class="layanan-item"><div class="layanan-dot"></div><span>Jasa Ketik</span><span class="layanan-arrow">→</span></a>
+        <a href="produk.html" class="layanan-item"><div class="layanan-dot"></div><span>Jasa Pembuatan PPT</span><span class="layanan-arrow">→</span></a>
+        <a href="produk.html" class="layanan-item"><div class="layanan-dot"></div><span>Jasa Perapian Dokumen</span><span class="layanan-arrow">→</span></a>
+        <a href="produk.html" class="layanan-item"><div class="layanan-dot"></div><span>Templat PPT Interaktif</span><span class="layanan-arrow">→</span></a>
+        <a href="produk.html" class="layanan-item"><div class="layanan-dot"></div><span>E-Book Pemulihan &amp; Unbind</span><span class="layanan-arrow">→</span></a>
+      </div>
+    </div>
+
+  </div><!-- /section-wrap -->
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="cta-text">
+      <h2>Siap bekerja sama dengan kami?</h2>
+      <p>Hubungi Holly sekarang dan rasakan layanan digital yang profesional.</p>
+    </div>
+    <a class="cta-btn" href="https://wa.me/6289654170240" target="_blank">Hubungi Kami via WhatsApp →</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div style="width:180px;height:180px;background:#f0f0f0;border-radius:20px;overflow:hidden;margin-bottom:14px;display:flex;align-items:center;justify-content:center;padding:10px;">
+          <img src="Holly.png" alt="Holly Group" style="width:100%;height:100%;object-fit:contain;display:block;" />
+        </div>
+        <p>Produk &amp; Jasa Digital untuk semua kebutuhanmu. Terpercaya, cepat, dan profesional.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Tentang Holly</h4>
+        <a href="carapesan.html">Cara Pesan</a>
+        <a href="https://wa.me/6289654170240" target="_blank">Hubungi Kami</a>
+        <a href="https://wa.me/6289654170240" target="_blank">Customer Service</a>
+        <a href="bantuan.html">Pusat Bantuan</a>
+        <a href="tentangkami.html">Tentang Kami</a>
+      </div>
+      <div class="footer-col">
+        <h4>Produk &amp; Jasa</h4>
+        <a href="produk.html">Jasa Unbind</a>
+        <a href="produk.html">Jasa Pemulihan Akun Game</a>
+        <a href="produk.html">Jasa Pemulihan Akun Sosial Media</a>
+        <a href="produk.html">Jasa Ketik</a>
+        <a href="produk.html">Jasa Pembuatan PPT</a>
+        <a href="produk.html">Jasa Perapian Dokumen</a>
+        <a href="produk.html">Templat PPT Interaktif</a>
+        <a href="produk.html">E Book Pemulihan dan Unbind</a>
+      </div>
+      <div class="footer-col">
+        <h4>Follow Kami di</h4>
+        <a href="https://www.facebook.com/share/1Aq7HUheYz/?mibextid=wwXIfr" target="_blank">Facebook</a>
+        <a href="https://www.instagram.com/hollygrup.id?igsh=b2hsNmZiY3loNDJn&utm_source=qr" target="_blank">Instagram</a>
+        <a href="https://www.tiktok.com/@holly.id2?_r=1&_t=ZS-946F6OQSyt5" target="_blank">TikTok</a>
+        <a href="#" target="_blank">Youtube</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>Copyright © 2025 Holly. All rights reserved.</span>
+      <span>Made with ❤️ by Holly Team</span>
+    </div>
+  </footer>
+
+  <script src="auth.js"></script>
+</body>
+</html>
